@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>9E90F1BD-F9AC-471D-993E-072AFA881F25</string>
+	<key>IDESourceControlProjectName</key>
+	<string>HellowMe</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>59D48C64-5981-437A-9624-FBC18A1C0162</key>
+		<string>http://172.16.1.56/svn/13Z216DSmartgrid/033.HelloMe/trunk</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>client/ios/team2/HellowMe/HellowMe.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>59D48C64-5981-437A-9624-FBC18A1C0162</key>
+		<string>../../../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectRepositoryRootDictionary</key>
+	<dict>
+		<key>59D48C64-5981-437A-9624-FBC18A1C0162</key>
+		<string>http://172.16.1.56/svn/13Z216DSmartgrid</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>http://172.16.1.56/svn/13Z216DSmartgrid/033.HelloMe/trunk/client/ios/team2/HellowMe/HellowMe.xcodeproj</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>59D48C64-5981-437A-9624-FBC18A1C0162</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.subversion</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>59D48C64-5981-437A-9624-FBC18A1C0162</string>
+			<key>IDESourceControlWCCName</key>
+			<string>team2</string>
+		</dict>
+	</array>
+</dict>
+</plist>

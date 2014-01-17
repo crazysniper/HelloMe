@@ -1,0 +1,46 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_5_0
+#warning "This project uses features only available in iOS SDK 5.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+    #import <CoreData/CoreData.h>
+#endif
+#define IS_IPHONE5   [UIScreen mainScreen].bounds.size.height == 568
+#define IOS_VERSION [[[UIDevice currentDevice] systemVersion] floatValue]
+
+#ifndef SWTableViewCell_Constants_h
+#define SWTableViewCell_Constants_h
+
+#define kUtilityButtonsWidthMax 220
+#define kUtilityButtonWidthDefault 90
+#define kSectionIndexWidth 15
+
+#define USER_ACCOUNT @"87s3KYgKE9dk"
+#define USER_PASSWORD @"su9YFkscGF67JGf"
+
+#define EMAILBOX_ID_SHOUJIAN 1
+#define EMAILBOX_ID_CAOGAO 2
+#define EMAILBOX_ID_LAJI 3
+//网络部分
+#define HELLOMEURL @"http://172.16.53.180/HelloMe?wsdl"
+#define IMPLURL @"http://impl.hellome.liandisys.com.cn/"
+///主题部分
+#define kThemeRed       @"red"
+#define kThemeBlue      @"blue"
+#define kThemePray      @"pray"
+#define kThemeGreen     @"green"
+#define kThemePurple    @"purple"
+#define kThemePink      @"pink"
+#define IMAGE(imagePath) [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:(imagePath) ofType:@"png"]]
+#define ThemeDidChangeNotification @"hellome.theme.change"
+#endif

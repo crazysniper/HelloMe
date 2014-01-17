@@ -1,0 +1,151 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_weight="3" >
+
+        <!-- 标题 -->
+
+        <EditText
+            android:id="@+id/title"
+            android:layout_width="270dp"
+            android:layout_height="match_parent"
+            android:hint="@string/hint_title"
+            android:maxLength="20"
+            android:singleLine="true" />
+
+    </LinearLayout>
+
+    <!-- datepicker -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_weight="3" >
+
+        <Button
+            android:id="@+id/date_select"
+            android:layout_width="120dp"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:onClick="dateSelect" />
+
+        <Button
+            android:id="@+id/time_select"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:onClick="timeSelect" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1" >
+
+        <!-- 正文 -->
+
+        <EditText
+            android:id="@+id/body"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:gravity="start"
+            android:hint="@string/hint_body"
+            android:inputType="textMultiLine"
+            android:textScaleX="1" />
+        
+    </LinearLayout>
+	
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="3" >
+        
+            <HorizontalScrollView
+        		android:id="@+id/horizontalScrollView1"
+        		android:layout_width="match_parent"
+        		android:layout_height="match_parent" >
+
+        		<LinearLayout
+            		android:layout_width="wrap_content"
+            		android:layout_height="match_parent"
+            		android:orientation="horizontal" >
+            
+            		<ImageButton
+                		android:id="@+id/addImage"
+                		android:layout_width="55dp"
+                		android:layout_height="55dp"
+                		android:src="@drawable/icon_write_picture"
+                		android:background="@null"
+                		android:onClick="addImage" />
+            
+            		<ImageButton
+                		android:id="@+id/addVoice"
+                		android:layout_width="55dp"
+                		android:layout_height="55dp"
+                		android:src="@drawable/icon_write_voice"
+                		android:background="@null"
+                		android:onClick="addVoice" />
+                        
+            		<ImageButton
+                		android:id="@+id/addFile"
+                		android:layout_width="55dp"
+                		android:layout_height="55dp"
+                		android:src="@drawable/icon_write_file"
+                		android:background="@null"
+                		android:onClick="addFile" />
+            		
+            		<ImageButton
+                		android:id="@+id/addOther"
+                		android:layout_width="55dp"
+                		android:layout_height="55dp"
+                		android:src="@drawable/icon_write_annex"
+                		android:background="@null"
+                		android:onClick="addOther" />
+
+            		<ImageButton
+                		android:id="@+id/addLocation"
+                		android:layout_width="55dp"
+                		android:layout_height="55dp"
+                		android:src="@drawable/icon_write_location"
+                		android:background="@null"
+                		android:onClick="addLocation" />
+            		
+            		<ImageButton
+                		android:id="@+id/save"
+                		android:layout_width="55dp"
+                		android:layout_height="55dp"
+                		android:src="@drawable/icon_write_save"
+                		android:background="@null"
+                		android:onClick="save" />
+            		
+            		<ImageButton
+                		android:id="@+id/upload"
+                		android:layout_width="55dp"
+                		android:layout_height="55dp"
+                		android:src="@drawable/icon_write_upload"
+                		android:background="@null"
+                		android:onClick="upload" />		
+            
+        		</LinearLayout>
+        		
+    		</HorizontalScrollView>
+        
+    </LinearLayout>
+
+</LinearLayout>

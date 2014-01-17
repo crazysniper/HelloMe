@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">HelloMe</string>
+    <string name="settings">设置</string>
+    <string name="hello_me">Hello Me!</string>
+    <string name="msg_delete_complete">选中邮件已删除</string>
+    <string name="msg_clear_complete">垃圾箱已清空</string>
+    <string name="msg_delete_title">删除</string>
+    <string name="msg_delete_content">是否删除？</string>
+    <string name="msg_clear_content">是否全部删除？</string>
+    <string name="confirm">确认</string>
+    <string name="cancel">取消</string>
+    <string name="msg_logout_title">退出</string>
+    <string name="msg_logout_content">是否退出？</string>
+    <string name="msg_download_title">download</string>
+    <string name="msg_download_content">New Mail Downloading&#8230;</string>
+    <string name="msg_relogin">请重新登录</string>
+    <string name="msg_upload_content">邮件发送中~~~~~~</string>
+    <string name="msg_login_content">登录中~~~~~~</string>
+    <string name="msg_register_content">注册中~~~~~~</string>
+    <string name="inbox">收信箱</string>
+    <string name="dustbin">垃圾箱</string>
+    <string name="draftbox">草稿箱</string>
+    <string name="help">帮助</string>
+    <string name="logout">退出账号</string>
+    <string name="user">用户</string>
+    <string name="password">密码</string>
+    <string name="confirm_password">确认密码</string>
+    <string name="login">登录</string>
+    <string name="register">注册</string>
+    <string name="reset">重置</string>
+    <string name="hint_user">请输入用户名</string>
+    <string name="hint_password">请输入密码</string>
+    <string name="hint_confirm_password">请再次确认密码</string>
+    <string name="msg_login_error">用户名或密码不正确</string>
+    <string name="msg_register_success">注册成功</string>
+    <string name="msg_register_error">用户名已存在</string>
+    <string name="msg_password_error">密码不一致</string>
+    <string name="msg_string_error">存在非法字符，用户名密码仅数字和字母</string>
+    <string name="msg_length_error">请将用户和密码的长度控制在4到20位</string>
+    <string name="msg_connect_error">服务器连接失败，请重试</string>
+
+    <string-array name="box">
+        <item>收件箱</item>
+        <item>草稿箱</item>
+        <item>垃圾箱</item>
+        <item>写信</item>
+    </string-array>
+
+    <string name="title_activity_write">WriteActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="hint_title">标题</string>
+    <string name="hint_body">正文</string>
+    <string name="main_date">设置接收日期和时间</string>
+    <string name="main_select">选取图片</string>
+    <string name="main_send">发送</string>
+    <!-- <string name="confirm">确定</string> -->
+    <string name="send_error">发送失败</string>
+    <!-- <string name="cancel">取消</string> -->
+    <string name="title_activity_date_time_dialog">MainActivity</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="title_activity_image">ImageActivity</string>
+    <string name="action_settings">Settings</string>
+
+</resources>
