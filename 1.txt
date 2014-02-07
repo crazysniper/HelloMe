@@ -16,3 +16,29 @@ CREATE TABLE USER(
 	USER_NAME VARCHAR(20) PRIMARY KEY,
 	PASSWORD VARCHAR(20) NOT NULL
 );
+
+
+
+http://www.cnblogs.com/weisteve/archive/2012/01/02/2309750.html
+http://www.cnblogs.com/weisteve/archive/2012/01/04/2311477.html
+http://baike.baidu.com/link?url=XitTRoQeOxi5HRKPMRZgAf7gbwgP0gbxWmNaLoxMwQBf-mMVnQF4rLazfw1Adb22
+http://www.cnblogs.com/liuxi/archive/2007/02/06/642379.html
+
+
+Configuration config=new Configuration().configure("hibernate.cfg.xml");
+SessionFactory sessionfactory=config.buildSessionFactory();
+Session session=sessionfactory.openSession();
+Transaction tx=session.beginTransaction();
+try
+{
+session.save();
+tx.commit();
+}
+catch(Exception e)
+{
+if(tx!=null) tx.rollback();
+}
+finally
+{
+session.close ();
+}
