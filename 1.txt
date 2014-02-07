@@ -25,20 +25,21 @@ http://baike.baidu.com/link?url=XitTRoQeOxi5HRKPMRZgAf7gbwgP0gbxWmNaLoxMwQBf-mMV
 http://www.cnblogs.com/liuxi/archive/2007/02/06/642379.html
 
 
-Configuration config=new Configuration().configure("hibernate.cfg.xml");
+Configuration config=new Configuration().configure();
 SessionFactory sessionfactory=config.buildSessionFactory();
 Session session=sessionfactory.openSession();
 Transaction tx=session.beginTransaction();
-try
-{
-session.save();
-tx.commit();
+try{
+	session.save();
+	tx.commit();
+}catch(Exception e){
+	if(tx!=null) tx.rollback();
+}finally{
+	session.close ();
 }
-catch(Exception e)
-{
-if(tx!=null) tx.rollback();
-}
-finally
-{
-session.close ();
-}
+
+
+
+
+http://blog.csdn.net/yingjiebohe/article/details/8283185
+http://blog.csdn.net/yingjiebohe/article/details/8283206
