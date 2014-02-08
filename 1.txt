@@ -1,4 +1,4 @@
-CREATE TABLE MAILBOX(
+﻿CREATE TABLE MAILBOX(
 	MAIL_ID INT PRIMARY KEY AUTO_INCREMENT,
 	SEND_FLAG INT NOT NULL,
 	SEND_TIME VARCHAR(100),
@@ -43,3 +43,76 @@ try{
 
 http://blog.csdn.net/yingjiebohe/article/details/8283185
 http://blog.csdn.net/yingjiebohe/article/details/8283206
+
+
+hibernate工作原理：
+1、通过Configuration().configure();读取并解析hibernate.cfg.xml配置文件。
+2、由hibernate.cfg.xml中的<mappingresource="com/xx/User.hbm.xml"/>读取解析映射信息。
+3、通过config.buildSessionFactory();//得到sessionFactory。
+4、sessionFactory.openSession();//得到session。
+5、session.beginTransaction();//开启事务。
+6、persistent operate;
+7、session.getTransaction().commit();//提交事务
+8、关闭session;
+9、关闭sessionFactory;
+hibernate优点：
+1、封装了jdbc，简化了很多重复性代码。
+2、简化了DAO层编码工作，使开发更对象化了。
+3、移植性好，支持各种数据库，如果换个数据库只要在配置文件中变换配置就可以了，不用改变hibernate代码。
+4、支持透明持久化，因为hibernate操作的是纯粹的（pojo）java类，没有实现任何接口，没有侵入性。所以说它是一个轻量级框架
+
+http://blog.knowsky.com/257681.htm
+
+增 session.save(Object o)
+   session.flush();
+改 session.update(Object o)  /id不可少，Hibernate只通过id来查找数据库
+  
+        Session session = CommonUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
+        SQLQuery query = session.createSQLQuery(sql);
+        query.addEntity(Member.class);
+        // 设置参数
+        query.setInteger(0, member.getLoginStatus());
+        // 设置缓存
+        query.setCacheable(true);
+        // 执行更新
+        query.executeUpdate();
+        // 清理缓存
+        session.flush();
+        // 提交事务
+        tx.commit();
+        // session关闭
+        CommonUtil.closeSession(session);
+
+删 session.delete(Object o)
+
+查：指定id	Session session=CommomUtil.getSessionFactory().openSession();
+		SQLQuery query = session.createSQLQuery(sql);
+		query.addEntity(实体类名.class);
+		//设置缓存
+		query.setCacheable(true);
+		//设置参数
+		query.setString(0,id);
+		实体类名 对象=(实体类名)query.uniqueResult();
+		CommonUtil.closeSession(session);
+		return 对象;
+
+
+
+    全部信息	Session session=CommonUtil.getSessionFactory().openSession();
+		SQLQuery query =session.createSQLQuery(sql);
+		query.addEntity(实体类名.class);
+		//设置缓存
+		query.setCacheable(true);
+		List<实体类名> list=query.list();
+		CommonUtil.closeSession(session);
+		return list;
+
+
+分页  http://www.cnblogs.com/fzx888888/archive/2011/05/15/hibernate_Paging.html
+http://blog.sina.com.cn/s/blog_7096a4800100pk99.html
+http://www.oschina.net/code/snippet_113190_7761
+http://sarin.iteye.com/blog/703537/
+
+http://wenku.baidu.com/link?url=pZvgnrrnB0-okUc_jaAQQNYO0UIs7IQpkWKXHO1S0Y4UJmKQLJi1n2k_2_4U-C_kghbqyIa2qQLdN3Sn3QDUtAJWzVVjQobaEBoHo2cNSnq
+http://blog.csdn.net/a352193394/article/details/7877930
