@@ -116,3 +116,17 @@ http://sarin.iteye.com/blog/703537/
 
 http://wenku.baidu.com/link?url=pZvgnrrnB0-okUc_jaAQQNYO0UIs7IQpkWKXHO1S0Y4UJmKQLJi1n2k_2_4U-C_kghbqyIa2qQLdN3Sn3QDUtAJWzVVjQobaEBoHo2cNSnq
 http://blog.csdn.net/a352193394/article/details/7877930
+
+Android
+http://www.cnblogs.com/skynet/archive/2010/07/20/1781644.html
+http://www.cnblogs.com/menlsh/tag/Android/
+http://www.cnblogs.com/pigzhu-qi/articles/2994472.html
+http://www.cnblogs.com/menlsh/archive/2012/10/07/2714235.html
+http://www.cnblogs.com/menlsh/archive/2012/11/24/2786604.html
+
+正则表达式
+exc  match 区别
+http://www.jb51.net/article/46378.htm
+http://blog.csdn.net/cjh200102/article/details/6100013
+
+http://www.jb51.net/article/28007.htm
