@@ -8,7 +8,7 @@ import android.content.SharedPreferences;
 import cn.com.liandisys.hellome.common.Const;
 import cn.com.liandisys.hellome.model.dao.MailDao;
 import cn.com.liandisys.hellome.model.dao.impl.MailDaoImpl;
-import cn.com.liandisys.hellome.model.entity.MailBoxInfo;
+import cn.com.liandisys.hellome.model.entity.MailBoxInfoEntity;
 import cn.com.liandisys.hellome.model.logic.MailLogic;
 import cn.com.liandisys.hellome.util.FileUtil;
 
@@ -24,7 +24,7 @@ public class MailLogicImpl implements MailLogic {
 	}
 
 	@Override
-	public long addMail(MailBoxInfo mailbox) {
+	public long addMail(MailBoxInfoEntity mailbox) {
 		String host = sp.getString(Const.HOST, "");
 		if ("".equals(host)) {
 			return -1;
@@ -43,7 +43,7 @@ public class MailLogicImpl implements MailLogic {
 	}
 
 	@Override
-	public long saveDraftMail(MailBoxInfo mailbox) {
+	public long saveDraftMail(MailBoxInfoEntity mailbox) {
 		String host = sp.getString(Const.HOST, "");
 		if ("".equals(host)) {
 			return -1;
@@ -93,7 +93,7 @@ public class MailLogicImpl implements MailLogic {
 	}
 
 	@Override
-	public List<MailBoxInfo> queryMailList(int type) {
+	public List<MailBoxInfoEntity> queryMailList(int type) {
 		String host = sp.getString(Const.HOST, "");
 		if ("".equals(host)) {
 			return null;
@@ -102,7 +102,7 @@ public class MailLogicImpl implements MailLogic {
 	}
 
 	@Override
-	public MailBoxInfo queryMail(int id) {
+	public MailBoxInfoEntity queryMail(int id) {
 		return dao.selectMailById(id);
 	}
 

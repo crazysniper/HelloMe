@@ -15,7 +15,6 @@ import cn.com.liandisys.hellome.util.CalendarUtil;
 import cn.com.liandisys.hellome.util.SoapUtil;
 import cn.com.liandisys.hellome.R;
 import cn.com.liandisys.hellome.common.Const;
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;

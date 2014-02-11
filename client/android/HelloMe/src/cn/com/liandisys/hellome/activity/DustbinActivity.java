@@ -5,7 +5,7 @@ import java.util.List;
 import cn.com.liandisys.hellome.R;
 import cn.com.liandisys.hellome.activity.adapter.MailBoxAdapter;
 import cn.com.liandisys.hellome.common.Const;
-import cn.com.liandisys.hellome.model.entity.MailBoxInfo;
+import cn.com.liandisys.hellome.model.entity.MailBoxInfoEntity;
 import cn.com.liandisys.hellome.model.logic.MailLogic;
 import cn.com.liandisys.hellome.model.logic.impl.MailLogicImpl;
 import android.app.Activity;
@@ -28,7 +28,7 @@ public class DustbinActivity extends Activity {
 
 	private ListView mMailbox;
 
-	private List<MailBoxInfo> mList;
+	private List<MailBoxInfoEntity> mList;
 
 	private MailLogic mLogic;
 

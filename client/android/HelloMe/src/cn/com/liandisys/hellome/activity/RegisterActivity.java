@@ -9,6 +9,7 @@ import org.xmlpull.v1.XmlPullParserException;
 import cn.com.liandisys.hellome.R;
 import cn.com.liandisys.hellome.common.Const;
 import cn.com.liandisys.hellome.util.SoapUtil;
+
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -54,6 +55,7 @@ public class RegisterActivity extends Activity {
 		setListener();
 	}
 	
+	//载入id
 	private void initView() {
 		mRegisterLayout = (RelativeLayout) findViewById(R.id.register_layout);
 		mRegisterUser = (EditText) findViewById(R.id.register_user);
@@ -61,6 +63,7 @@ public class RegisterActivity extends Activity {
 		mRegisterConfirmPassword = (EditText) findViewById(R.id.register_confirm_password);
 	}
 	
+	//设置手势监听器
 	private void setListener() {
 		mGestureDetector = new GestureDetector(this, new RegisterGestureListener());
 		
@@ -89,6 +92,7 @@ public class RegisterActivity extends Activity {
 			try {
 				String status = new JSONObject(msg.obj.toString()).getString("status");
 				if ("success".equals(status)) {
+					// 跳转
 					Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
 					startActivity(intent);
 					finish();
@@ -103,10 +107,12 @@ public class RegisterActivity extends Activity {
 		}
 	};
 	
+	// 正则判断是否符合要求数字和英文
 	private boolean checkString(String keyword) {
 		return keyword.matches(Const.REGULAR_EXPRESSION);
 	}
 
+	// Toast
 	private void showToast(int msgId) {
 		Toast.makeText(this, msgId, Toast.LENGTH_SHORT).show();
 	}
@@ -137,18 +143,20 @@ public class RegisterActivity extends Activity {
 	public void registerAction(View view) {
 		registerUser = mRegisterUser.getText().toString();
 		registerPassword = mRegisterPassword.getText().toString();
-		registerConfirmPassword = mRegisterConfirmPassword.getText()
-				.toString();
-		if ("".equals(registerUser) || "".equals(registerPassword)
-				|| "".equals(registerConfirmPassword)) {
+		registerConfirmPassword = mRegisterConfirmPassword.getText().toString();
+		
+		// 判断用户名和密码是否为空
+		if ("".equals(registerUser) || "".equals(registerPassword)|| "".equals(registerConfirmPassword)) {
 			return;
 		}
-		if (!checkString(registerUser)
-				|| !checkString(registerPassword)
-				|| !checkString(registerConfirmPassword)) {
+		// 验证用户名和密码是否合法
+		// 调用checkString()方法
+		if (!checkString(registerUser)|| !checkString(registerPassword)|| !checkString(registerConfirmPassword)) {
+			// 调用showToast()方法显示提示信息
 			showToast(R.string.msg_string_error);
 			return;
 		}
+		// 密码和确认密码是否一致
 		if (!registerPassword.equals(registerConfirmPassword)) {
 			showToast(R.string.msg_password_error);
 			return;
@@ -158,15 +166,24 @@ public class RegisterActivity extends Activity {
 		
 		progressDialog = ProgressDialog.show(this, "", getResources().getString(R.string.msg_register_content));
 		
+		// 开启线程
 		new Thread(runnable).start();
+		
+		Bundle bundle=new Bundle();
+		bundle.putString("11","222");
+		Intent intent =new Intent(this,LoginActivity.class);
+		intent.putExtras(bundle);
+		startActivity(intent);
 	}
 	
+	// 重置
 	public void resetAction(View view) {
 		mRegisterUser.setText("");
 		mRegisterPassword.setText("");
 		mRegisterConfirmPassword.setText("");
 	}
 	
+	// 线程
 	Runnable runnable = new Runnable() {
 
 		@Override
@@ -186,6 +203,7 @@ public class RegisterActivity extends Activity {
 		
 	};
 	
+	// 手势
 	class RegisterGestureListener implements GestureDetector.OnGestureListener {
 
 		@Override

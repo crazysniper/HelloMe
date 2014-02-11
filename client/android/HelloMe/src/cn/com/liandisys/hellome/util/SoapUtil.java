@@ -15,16 +15,16 @@ public class SoapUtil {
 	
 	private static String SOAP_ACTION = null;
 	
+	// 方法
 	public static SoapObject buildSoapObject(String methodName) {
 		SoapObject soapObject = new SoapObject(Const.NAMESPACE, methodName);
 		SOAP_ACTION = methodName;
 		return soapObject;
 	}
 	
+	// soap塞值
 	public static SoapObject setSoapRequestParamter(String[] paramters, SoapObject soapObject) {
-		if (null == paramters) {
-			return soapObject;
-		} else if (paramters.length == 0) {
+		if (null == paramters || paramters.length == 0) {
 			return soapObject;
 		}
 		for (int i = 0; i < paramters.length; i++) {
@@ -33,12 +33,12 @@ public class SoapUtil {
 		return soapObject;
 	}
 	
+	// 返回往服务器传值的结果
 	public static SoapObject resultSoapObject(SoapObject soapObject) throws IOException, XmlPullParserException {
 		System.setProperty("http.keepAlive", "false");
         HttpTransportSE ht = new HttpTransportSE(Const.URL);  
         ht.debug = true;  
-        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(  
-                SoapEnvelope.VER11);
+        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
         envelope.dotNet = false;
         envelope.bodyOut = soapObject;
         new MarshalBase64().register(envelope);

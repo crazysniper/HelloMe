@@ -71,7 +71,7 @@ public class Const {
 	
 	public static final String NAMESPACE = "http://impl.hellome.liandisys.com.cn/";
 	
-	public static final String URL = "http://172.16.53.180/HelloMe?wsdl";
+	public static final String URL = "http://172.16.51.24/HelloMe";
 	
 	public static final String LOGIN = "login";
 	

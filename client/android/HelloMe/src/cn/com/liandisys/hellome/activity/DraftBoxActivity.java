@@ -5,7 +5,7 @@ import java.util.List;
 
 import cn.com.liandisys.hellome.R;
 import cn.com.liandisys.hellome.activity.adapter.MailBoxAdapter;
-import cn.com.liandisys.hellome.model.entity.MailBoxInfo;
+import cn.com.liandisys.hellome.model.entity.MailBoxInfoEntity;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -26,7 +26,7 @@ public class DraftBoxActivity extends Activity {
 	
 	private ListView mMailbox;
 
-	private List<MailBoxInfo> mList;
+	private List<MailBoxInfoEntity> mList;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +35,7 @@ public class DraftBoxActivity extends Activity {
 		Log.d(TAG, "onCreate");
 
 //		createActionBar(Const.MODE_DRAFT_BOX);
-		mList = new ArrayList<MailBoxInfo>();
+		mList = new ArrayList<MailBoxInfoEntity>();
 //		for (int i = 0; i < 2; i++) {
 //			mList.add(new MailBoxInfo(i, "send : 2012-11-2" + (i + 1),
 //					"get : 2013-11-2" + i, "Hello Me!", null));

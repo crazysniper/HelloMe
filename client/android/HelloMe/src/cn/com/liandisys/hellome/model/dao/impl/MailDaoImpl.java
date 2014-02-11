@@ -11,7 +11,7 @@ import android.util.Log;
 import cn.com.liandisys.hellome.common.Const;
 import cn.com.liandisys.hellome.database.MailDBHelper;
 import cn.com.liandisys.hellome.model.dao.MailDao;
-import cn.com.liandisys.hellome.model.entity.MailBoxInfo;
+import cn.com.liandisys.hellome.model.entity.MailBoxInfoEntity;
 
 public class MailDaoImpl implements MailDao {
 
@@ -31,8 +31,9 @@ public class MailDaoImpl implements MailDao {
 		return MailDBHelper.getInstance(context).getWritableDatabase();
 	}
 
+	// 插入信息
 	@Override
-	public long insertMail(MailBoxInfo mailbox) {
+	public long insertMail(MailBoxInfoEntity mailbox) {
 		Log.d(TAG, "insertMail");
 		ContentValues values = new ContentValues();
 		// values.put(Const.MAIL_ID, mailbox.getId());
@@ -47,6 +48,7 @@ public class MailDaoImpl implements MailDao {
 		return getMailDB().insert(Const.TABLE_NAME, null, values);
 	}
 
+	// 本地删除
 	@Override
 	public long logicDeleteMail(int id) {
 		Log.d(TAG, "logicDeleteMail id:" + id);
@@ -56,6 +58,7 @@ public class MailDaoImpl implements MailDao {
 				Const.MAIL_ID + " = ?", new String[] { String.valueOf(id) });
 	}
 
+	// 彻底删除
 	@Override
 	public long deleteMail(int id) {
 		Log.d(TAG, "deleteMail id:" + id);
@@ -63,6 +66,7 @@ public class MailDaoImpl implements MailDao {
 				new String[] { String.valueOf(id) });
 	}
 
+	// 清空信箱
 	@Override
 	public long clearMail(int type, String host) {
 		Log.d(TAG, "clearMail type:" + type);
@@ -73,12 +77,13 @@ public class MailDaoImpl implements MailDao {
 	}
 
 	@Override
-	public long updateMail(MailBoxInfo mailbox) {
+	public long updateMail(MailBoxInfoEntity mailbox) {
 		Log.d(TAG, "updateMail");
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
+	// 接收信息后更改信件状态
 	@Override
 	public long updateMailReaded(int id) {
 		Log.d(TAG, "updateMailReaded id:" + id);
@@ -89,7 +94,7 @@ public class MailDaoImpl implements MailDao {
 	}
 
 	@Override
-	public List<MailBoxInfo> selectMailByTypeAndHost(int type, String host) {
+	public List<MailBoxInfoEntity> selectMailByTypeAndHost(int type, String host) {
 		Log.d(TAG, "selectMailByTypeAndHost type:" + type + ", host: " + host);
 		Cursor cursor = null;
 		try {
@@ -98,7 +103,7 @@ public class MailDaoImpl implements MailDao {
 			String[] selectionArgs = new String[] { String.valueOf(type), host };
 			cursor = getMailDB().query(Const.TABLE_NAME, COLUMNS, selection,
 					selectionArgs, null, null, Const.MAIL_ID + " desc");
-			List<MailBoxInfo> list = new ArrayList<MailBoxInfo>();
+			List<MailBoxInfoEntity> list = new ArrayList<MailBoxInfoEntity>();
 			while (cursor.moveToNext()) {
 				list.add(createEntity(cursor));
 			}
@@ -112,7 +117,7 @@ public class MailDaoImpl implements MailDao {
 	}
 
 	@Override
-	public MailBoxInfo selectMailById(int id) {
+	public MailBoxInfoEntity selectMailById(int id) {
 		Log.d(TAG, "selectMailByTypeAndHost id:" + id);
 		Cursor cursor = null;
 		try {
@@ -120,7 +125,7 @@ public class MailDaoImpl implements MailDao {
 			String[] selectionArgs = new String[] { String.valueOf(id) };
 			cursor = getMailDB().query(Const.TABLE_NAME, COLUMNS, selection,
 					selectionArgs, null, null, null);
-			MailBoxInfo mailbox = null;
+			MailBoxInfoEntity mailbox = null;
 			if (cursor.moveToNext()) {
 				mailbox = createEntity(cursor);
 			}
@@ -133,9 +138,9 @@ public class MailDaoImpl implements MailDao {
 		}
 	}
 
-	private MailBoxInfo createEntity(Cursor cursor) {
+	private MailBoxInfoEntity createEntity(Cursor cursor) {
 		int idx = 0;
-		MailBoxInfo entity = new MailBoxInfo();
+		MailBoxInfoEntity entity = new MailBoxInfoEntity();
 		entity.setId(cursor.getInt(idx++));
 		entity.setSendTime(cursor.getString(idx++));
 		entity.setGetTime(cursor.getString(idx++));

@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.List;
 import cn.com.liandisys.hellome.R;
 import cn.com.liandisys.hellome.common.Const;
-import cn.com.liandisys.hellome.model.entity.MailBoxInfo;
+import cn.com.liandisys.hellome.model.entity.MailBoxInfoEntity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -20,9 +20,9 @@ public class MailBoxAdapter extends BaseAdapter {
 
 	private LayoutInflater inflater;
 
-	private List<MailBoxInfo> list;
+	private List<MailBoxInfoEntity> list;
 
-	public MailBoxAdapter(Context context, List<MailBoxInfo> list) {
+	public MailBoxAdapter(Context context, List<MailBoxInfoEntity> list) {
 		this.list = list;
 		inflater = LayoutInflater.from(context);
 	}

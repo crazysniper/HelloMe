@@ -9,7 +9,7 @@ import org.xmlpull.v1.XmlPullParserException;
 import cn.com.liandisys.hellome.R;
 import cn.com.liandisys.hellome.activity.adapter.MailBoxAdapter;
 import cn.com.liandisys.hellome.common.Const;
-import cn.com.liandisys.hellome.model.entity.MailBoxInfo;
+import cn.com.liandisys.hellome.model.entity.MailBoxInfoEntity;
 import cn.com.liandisys.hellome.model.logic.MailLogic;
 import cn.com.liandisys.hellome.model.logic.impl.MailLogicImpl;
 import cn.com.liandisys.hellome.service.DownloadService;
@@ -62,7 +62,7 @@ public class InboxActivity extends Activity implements View.OnClickListener {
 	
 	private RelativeLayout mMailboxLayout;
 
-	private List<MailBoxInfo> mList;
+	private List<MailBoxInfoEntity> mList;
 
 	private TextView mUserName;
 
@@ -285,7 +285,7 @@ public class InboxActivity extends Activity implements View.OnClickListener {
 						json))) {
 					showToast(JSonUtil.getJSonString(Const.MESSAGE, json));
 				} else {
-					List<MailBoxInfo> list = JSonUtil.getMails(json);
+					List<MailBoxInfoEntity> list = JSonUtil.getMails(json);
 					for (int i = 0; i < list.size(); i++) {
 						mLogic.addMail(list.get(i));
 					}

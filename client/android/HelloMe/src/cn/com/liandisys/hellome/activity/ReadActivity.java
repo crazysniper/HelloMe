@@ -3,7 +3,7 @@ package cn.com.liandisys.hellome.activity;
 import java.io.File;
 
 import cn.com.liandisys.hellome.R;
-import cn.com.liandisys.hellome.model.entity.MailBoxInfo;
+import cn.com.liandisys.hellome.model.entity.MailBoxInfoEntity;
 import cn.com.liandisys.hellome.model.logic.MailLogic;
 import cn.com.liandisys.hellome.model.logic.impl.MailLogicImpl;
 import cn.com.liandisys.hellome.common.Const;
@@ -23,7 +23,7 @@ public class ReadActivity extends Activity {
 	private boolean setMailData(int mailId) {
 		boolean result = true;
 		MailLogic mLogic = new MailLogicImpl(this);
-		MailBoxInfo mail = mLogic.queryMail(mailId);
+		MailBoxInfoEntity mail = mLogic.queryMail(mailId);
 		
 		ImageButton imageButton = (ImageButton) findViewById(R.id.annex);
 		if (null == mail.getImageName() || "".equals(mail.getImageName())) {
