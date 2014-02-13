@@ -1,21 +1,53 @@
-﻿CREATE TABLE MAILBOX(
-	MAIL_ID INT PRIMARY KEY AUTO_INCREMENT,
-	SEND_FLAG INT NOT NULL,
-	SEND_TIME VARCHAR(100),
-	RECEIVE_TIME VARCHAR(100),
-	TITLE VARCHAR(100),
-	CONTENT VARCHAR(1000),
-	SEND_FILE_NAME VARCHAR(100),
-	IMAGE_PATH VARCHAR(200),
-	USER_NAME VARCHAR(20)
-);
+﻿黑马程序员 http://www.cnblogs.com/i-datou/p/?page=1
+http://blog.csdn.net/tkd03072010/article/details/7475910
+http://www.cjsdn.net/
+我个人比较讨厌这种写法 <a href= " <%=request.getContextPath()%> /ServerletName "> xxx </a> 
+这样既暴露你的请求名与参数并且也不重用. 
+我的习惯是 <a href= "javascript:method(); "> </a> 
+function method(){ 
+//如果是有form那就直接用form.submit(); 
+//如果没有form那就用location.href= "这里就跟你的请求对象 "; 
+} 
 
 
+CSDN下载免积分 http://bbs.csdn.net/topics/390674613
 
-CREATE TABLE USER(
-	USER_NAME VARCHAR(20) PRIMARY KEY,
-	PASSWORD VARCHAR(20) NOT NULL
-);
+http://blog.csdn.net/tkd03072010/article/details/7026429
+有用的分页 http://blog.csdn.net/tkd03072010/article/details/7475910
+
+href 链接到不同类型的页面  http://www.monmonkey.com/rumenpian/wwwjichu5.html
+在url中使用&要转义  &——>>&amp;
+jdbc:mysql://localhost:3306/jd1206db?useUnicode=true&amp;characterEncoding=utf8
+
+http://blog.csdn.net/chinajust/article/category/368161
+
+Struts2.x里面感叹号是调用action里面指定的方法，比如xx.action!userAdd表示调用 xx.action里面的userAdd方法，我不知道你的url里面是不是这样的。
+Struts 2 s 标签大全  http://my.oschina.net/u/265431/blog/78997
+在 WebWork2 中，可以使用感叹号（！）来指定要执行（或调用）非 execute 方法，但是还没有一个真正的术语该种方式的定义。在 s2 的讨论中，我们定义了“动态方法调用”这个术语来描述 webwork/s2 对感叹号的使用。 
+
+动态方法调用（ DMI ）通过在 action 名称和要调用的 Action 方法之间添加一个感叹号进行分割，以表示调用 action 中指定的方法（非 exeucte 方法）。如：“ Category ！ create.action ”，表示调用 Category Action 中定义的 create 方法。 
+
+<s:form namespace="/" action="update!update" theme="simple">
+
+当使用type＝“redirectAction” 或type＝“redirect”提交到一个action并且需要传递一个参数时。这里是有区别的： 
+使用type＝“redirectAction”时，结果就只能写Action的配置名，不能带有后缀:“.action” 
+Java代码 
+        
+<action name="Login" class="steven.actions.LoginAction">   
+  <result name="success" type="<SPAN class=hilite1>redirect</SPAN>Action">User?u_id=${loginBean.u_id}</result>   
+</action>  
+
+     
+<action name="Login" class="steven.actions.LoginAction">
+  <result name="success" type="redirectAction">User?u_id=${loginBean.u_id}</result>
+</action>
+使用type＝“redirect”时，结果应是action配置名＋后缀名 
+Java代码 
+<action name="Login" class="steven.actions.LoginAction">   
+   <result name="success" type="<SPAN class=hilite1>redirect</SPAN>">User.action?u_id=${loginBean.u_id}</result>   
+</action> 
+
+
 
 
 
