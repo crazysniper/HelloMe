@@ -51,6 +51,7 @@ public class SoapUtil {
         return null;  
     }
 	
+	// 将从服务器接收到的soap转成String型
 	public static String getResultString(SoapObject soapObject) throws IOException, XmlPullParserException{  
         SoapObject resultSoapObject = resultSoapObject(soapObject);  
         if (resultSoapObject != null) {

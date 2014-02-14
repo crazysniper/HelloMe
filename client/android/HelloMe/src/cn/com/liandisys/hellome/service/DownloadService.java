@@ -28,6 +28,11 @@ public class DownloadService extends Service  {
 		return null;
 	}
 	
+	/*
+	 * 如果Service还没有运行，则先调用onCreate()，然后调用onStartCommand，，旧版本调用onStart()
+	 * 如果已经运行，则只要调用onStartCommand，，旧版本调用onStart()
+	 * 所有一个Service的onStart()可能会重复调用多次
+	 */
 	@Override
 	public void onCreate() {
 		Log.e(TAG, "on creat");
@@ -36,8 +41,7 @@ public class DownloadService extends Service  {
 
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
-		sharedPreferences = this.getSharedPreferences(Const.SP_NAME,
-				Context.MODE_PRIVATE);
+		sharedPreferences = this.getSharedPreferences(Const.SP_NAME,Context.MODE_PRIVATE);
 		return super.onStartCommand(intent, flags, startId);
 	}
 	
@@ -46,18 +50,23 @@ public class DownloadService extends Service  {
 		@Override
 		public void run() {
 			Log.e(TAG, "start service");
+			// 获得用户名
 			String host = sharedPreferences.getString(Const.HOST, "");
+			// 获得当前时间，格式是 201402141503
 			String currentTime = CalendarUtil.formatNow(System.currentTimeMillis());
 			Log.e(TAG, String.valueOf(currentTime));
 
 			String json = null;
 			try {
+				// 
 				SoapObject soapObject = SoapUtil.buildSoapObject(Const.GET);
+				// 塞值
 				soapObject = SoapUtil.setSoapRequestParamter(new String[] { host,
 						currentTime }, soapObject);
 				if (null == soapObject) {
 					return;
 				}
+				// 开始获取邮件，返回到String型的json
 				json = SoapUtil.getResultString(soapObject);
 				Log.e(TAG, json);
 			} catch (IOException e) {

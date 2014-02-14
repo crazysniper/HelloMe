@@ -44,6 +44,11 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
 
+/**
+ * 收件箱
+ * @author gaofeng2
+ *
+ */
 public class InboxActivity extends Activity implements View.OnClickListener {
 
 	private final static String TAG = "InboxActivity";
@@ -109,8 +114,18 @@ public class InboxActivity extends Activity implements View.OnClickListener {
 		setContentView(R.layout.activity_mail_box);
 		Log.d(TAG, "onCreate");
 		
+		/*
+		 * DownloadService是一个service。Service不能自己运行，只能后台运行，并且可以和其他组件进行交互
+		 * 启动Service有2中方式 context.startService()和context.blindService()
+		 *   
+		 */
 		Intent serviceIntent = new Intent(InboxActivity.this, DownloadService.class);
+		// 停止Service
 		this.stopService(serviceIntent);
+		// 启动Service
+		/*
+		 * 用startService()启动Service
+		 */
 		this.startService(serviceIntent);
 
 		ActivityManager.getInstance().addActivity(this);

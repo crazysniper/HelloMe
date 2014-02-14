@@ -10,6 +10,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 
+/**
+ * 欢迎页面 
+ * @author gaofeng2
+ *
+ */
 public class SplashActivity extends Activity {
 
 	private final static String TAG = "SplashActivity";
@@ -29,14 +34,16 @@ public class SplashActivity extends Activity {
 	class splashhandler implements Runnable {
 
 		public void run() {
-			
+			// 获取sharedPreferences
 			SharedPreferences sharedPreferences = getSharedPreferences(Const.SP_NAME, Context.MODE_PRIVATE);
+			// 获取用户名，如果为获取到，则为""
 			String username = sharedPreferences.getString(Const.HOST, "");
+			// 判断是否已登录，未登录，则为false
 			boolean isLogin = sharedPreferences.getBoolean(Const.IS_LOGIN,false);
-
+			// 如果能取到用户名或者已登录，则跳转到收件箱画面
 			if (!"".equals(username) && isLogin) {
 				startActivity(new Intent(getApplication(), InboxActivity.class));
-			} else {
+			} else {	// 否则跳到登录画面
 				startActivity(new Intent(getApplication(), LoginActivity.class));
 			}
 			SplashActivity.this.finish();
