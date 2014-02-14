@@ -62,5 +62,6 @@
     <string name="title_activity_register">RegisterActivity</string>
     <string name="title_activity_image">ImageActivity</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_main1_activity11">Main1Activity11</string>
 
 </resources>
