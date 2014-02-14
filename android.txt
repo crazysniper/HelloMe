@@ -1,0 +1,43 @@
+﻿http://sarin.iteye.com/blog/1636484
+
+Service
+http://rainbow702.iteye.com/blog/1142685
+
+
+
+ start service。
+它的生命周期中只有三个阶段：onCreate, onStartCommand(取代原来的onStart方法), onDestroy。
+
+① 如果是 调用者 直接退出而没有调用 stopService 的话，那么被启动的 Service 会一直在后台运行，直至其stopService 方法被调用，或者它自己调用stopSelf 方法。
+② 在服务未被创建时，系统会先调用服务的onCreate()方法，接着调用onStartCommand()方法。
+   如果调用startService()方法前服务已经被创建，那么会直接调用onStartCommand()方法。
+   也就是说，多次调用startService()方法并不会导致多次创建服务。另外，不管被 start 多少次，只需一次 stop 便可将相应的service关闭。
+③ 具体的操作应该放在 onStartCommand() 里面
+
+
+启动方式
+
+1 .context.startService() 方式
+
+使用context.startService() 启动时，Service会经历如下生命周期:
+
+Start:  context.startService()→onCreate()→onStart()→Servicerunning
+
+Stop:  context.stopService()→onDestroy()→Service stop
+
+如果Service还没有运行，则android先调用onCreate()然后调用onStart()；
+如果Service已经运行，则只调用onStart()，所以一个Service的onStart方法可能会重复调用多次。 stopService的时候直接onDestroy，如果是调用者自己直接退出而没有调用stopService的话，Service会一直在后台运行。
+该Service的调用者再启动起来后可以通过stopService关闭Service。
+
+所以调用startService的生命周期为：onCreate --> onStart(可多次调用)--> onDestroy
+
+
+2. context.bindService()方式
+
+使用使用context.bindService()启动时，Service会经历如下生命周期:
+
+Start:  context.bindService()→onCreate()→onBind()→Servicerunning
+
+Stop:  onUnbind()→onDestroy()→Service stop
+
+onBind将返回给客户端一个IBind接口实例，IBind允许客户端回调服务的方法，比如得到Service运行的状态或其他操作。这个时候把调用者（Context，例如Activity）会和Service绑定在一起，Context退出了，Srevice就会调用onUnbind->onDestroy相应退出。 所以调用bindService的生命周期为：onCreate->onBind(只一次，不可多次绑定) --> onUnbind --> onDestory。在Service每一次的开启关闭过程中，只有onStart可被多次调用(通过多次startService调用)，其他onCreate，onBind，onUnbind，onDestory在一个生命周期中只能被调用一次。

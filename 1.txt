@@ -1,6 +1,13 @@
 ﻿黑马程序员 http://www.cnblogs.com/i-datou/p/?page=1
 http://blog.csdn.net/tkd03072010/article/details/7475910
 http://www.cjsdn.net/
+hibernate增删改查
+http://blog.csdn.net/wintersweetsugar/article/details/19155109
+jquery $(document).ready() 与window.onload的区别
+http://www.jb51.net/article/21628.htm
+
+
+
 我个人比较讨厌这种写法 <a href= " <%=request.getContextPath()%> /ServerletName "> xxx </a> 
 这样既暴露你的请求名与参数并且也不重用. 
 我的习惯是 <a href= "javascript:method(); "> </a> 
