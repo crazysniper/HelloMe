@@ -50,11 +50,11 @@ public class Const {
 	public final static String INTENT_ID = "id";
 	
 	/************************* Mode Key *************************/
-	
+	// 收件箱
 	public final static int MODE_INBOX = 0;
-	
+	// 草稿箱
 	public final static int MODE_DRAFT_BOX = 1;
-	
+	// 垃圾箱
 	public final static int MODE_DUSTBIN = 2;
 	
 	public final static int MODE_WRITE = 3;

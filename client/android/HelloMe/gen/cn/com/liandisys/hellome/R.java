@@ -71,23 +71,19 @@ public final class R {
         public static final int shape_border_blue=0x7f020016;
     }
     public static final class id {
-        public static final int action_settings=0x7f0b002d;
-        public static final int addFile=0x7f0b0021;
+        public static final int action_settings=0x7f0b0028;
         public static final int addImage=0x7f0b001f;
-        public static final int addLocation=0x7f0b0023;
-        public static final int addOther=0x7f0b0022;
-        public static final int addVoice=0x7f0b0020;
         public static final int annex=0x7f0b0012;
         public static final int body=0x7f0b001d;
         public static final int cancel=0x7f0b0000;
         public static final int clear=0x7f0b000b;
         public static final int content=0x7f0b0011;
         public static final int date_select=0x7f0b001b;
-        public static final int delete=0x7f0b002e;
+        public static final int delete=0x7f0b0029;
         public static final int divider_line=0x7f0b000e;
         public static final int forward=0x7f0b0019;
         public static final int header=0x7f0b0008;
-        public static final int help=0x7f0b002f;
+        public static final int help=0x7f0b002a;
         public static final int horizontalScrollView1=0x7f0b001e;
         public static final int image=0x7f0b0001;
         public static final int inbox_list=0x7f0b000f;
@@ -96,12 +92,12 @@ public final class R {
         public static final int login_password=0x7f0b0004;
         public static final int login_user=0x7f0b0003;
         public static final int mail_box_layout=0x7f0b0007;
-        public static final int mail_content=0x7f0b002b;
-        public static final int mail_get_time=0x7f0b002a;
-        public static final int mail_id=0x7f0b0026;
-        public static final int mail_image=0x7f0b0027;
-        public static final int mail_image_view=0x7f0b0028;
-        public static final int mail_title=0x7f0b0029;
+        public static final int mail_content=0x7f0b0026;
+        public static final int mail_get_time=0x7f0b0025;
+        public static final int mail_id=0x7f0b0021;
+        public static final int mail_image=0x7f0b0022;
+        public static final int mail_image_view=0x7f0b0023;
+        public static final int mail_title=0x7f0b0024;
         public static final int menu_list=0x7f0b001a;
         public static final int new_mail=0x7f0b000d;
         public static final int refresh=0x7f0b000c;
@@ -111,12 +107,11 @@ public final class R {
         public static final int register_password=0x7f0b0015;
         public static final int register_reset=0x7f0b0017;
         public static final int register_user=0x7f0b0014;
-        public static final int save=0x7f0b0024;
         public static final int setting_layout=0x7f0b0018;
-        public static final int setting_menu_title=0x7f0b002c;
+        public static final int setting_menu_title=0x7f0b0027;
         public static final int time_select=0x7f0b001c;
         public static final int title=0x7f0b0010;
-        public static final int upload=0x7f0b0025;
+        public static final int upload=0x7f0b0020;
         public static final int user=0x7f0b0009;
         public static final int username=0x7f0b000a;
     }
@@ -153,6 +148,7 @@ public final class R {
         public static final int hint_password=0x7f07001e;
         public static final int hint_title=0x7f070029;
         public static final int hint_user=0x7f07001d;
+        public static final int image_tip=0x7f070034;
         public static final int inbox=0x7f070012;
         public static final int login=0x7f07001a;
         public static final int logout=0x7f070016;

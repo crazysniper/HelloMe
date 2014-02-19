@@ -61,18 +61,18 @@ public class DustbinActivity extends Activity {
 				// TODO delete mail
 				AlertDialog.Builder builder = new AlertDialog.Builder(
 						DustbinActivity.this)
-						.setTitle(R.string.msg_delete_title)
-						.setMessage(R.string.msg_delete_content)
-						.setNegativeButton(R.string.cancel, null)
-						.setPositiveButton(R.string.confirm,
+						.setTitle(R.string.msg_delete_title)	// 设置对话框标题 “删除”
+						.setMessage(R.string.msg_delete_content)	// 设置对话框内容	“是否删除？”
+						.setNegativeButton(R.string.cancel, null)	// 设置对话框按钮  “取消”
+						.setPositiveButton(R.string.confirm,		// 设置对话框按钮	“确定”
 								new OnClickListener() {
 
 									@Override
 									public void onClick(DialogInterface dialog,
 											int which) {
-										mLogic.deleteMail(mList.get(p).getId());
-										showToast(R.string.msg_delete_complete);
-										refreshList();
+										mLogic.deleteMail(mList.get(p).getId());	// 删除该条信息
+										showToast(R.string.msg_delete_complete);	// 提示“选中邮件已删除”
+										refreshList();		// 重新检索垃圾箱的所有信息
 									}
 								});
 				builder.create().show();
@@ -102,6 +102,7 @@ public class DustbinActivity extends Activity {
 		Toast.makeText(this, msgId, Toast.LENGTH_SHORT).show();
 	}
 
+	// 重新检索垃圾箱的所有信息
 	private void refreshList() {
 		mList = mLogic.queryMailList(Const.MODE_DUSTBIN);
 		if (null != mList) {

@@ -82,8 +82,8 @@ public class LoginActivity extends Activity {
 					// 让其处于编辑状态
 					SharedPreferences.Editor editor = hellome.edit();
 					// 存放数据
-					editor.putString(Const.HOST, loginUser);
-					editor.putBoolean(Const.IS_LOGIN, true);
+					editor.putString(Const.HOST, loginUser);	// 用户名
+					editor.putBoolean(Const.IS_LOGIN, true);	// 是否登录
 					// 获取Preferences
 //					SharedPreferences hellome = getPreferences(Const.SP_NAME,Context.MODE_PRIVATE);
 //					// 取出数据

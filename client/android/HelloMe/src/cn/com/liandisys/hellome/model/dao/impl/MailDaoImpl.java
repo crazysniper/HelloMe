@@ -13,6 +13,11 @@ import cn.com.liandisys.hellome.database.MailDBHelper;
 import cn.com.liandisys.hellome.model.dao.MailDao;
 import cn.com.liandisys.hellome.model.entity.MailBoxInfoEntity;
 
+/**
+ * Dao层
+ * @author gaofeng2
+ *
+ */
 public class MailDaoImpl implements MailDao {
 
 	private final static String TAG = "MailDaoImpl";
@@ -31,7 +36,7 @@ public class MailDaoImpl implements MailDao {
 		return MailDBHelper.getInstance(context).getWritableDatabase();
 	}
 
-	// 插入信息
+	// 插入信息到本地数据中去
 	@Override
 	public long insertMail(MailBoxInfoEntity mailbox) {
 		Log.d(TAG, "insertMail");
@@ -48,7 +53,7 @@ public class MailDaoImpl implements MailDao {
 		return getMailDB().insert(Const.TABLE_NAME, null, values);
 	}
 
-	// 本地删除
+	// 将信件放到回收箱中去
 	@Override
 	public long logicDeleteMail(int id) {
 		Log.d(TAG, "logicDeleteMail id:" + id);
@@ -58,7 +63,7 @@ public class MailDaoImpl implements MailDao {
 				Const.MAIL_ID + " = ?", new String[] { String.valueOf(id) });
 	}
 
-	// 彻底删除
+	// 从本地直接删除指定id的信件，而不是放到回收箱
 	@Override
 	public long deleteMail(int id) {
 		Log.d(TAG, "deleteMail id:" + id);
@@ -66,7 +71,10 @@ public class MailDaoImpl implements MailDao {
 				new String[] { String.valueOf(id) });
 	}
 
-	// 清空信箱
+	/**
+	 * 清空某个信箱，不如收件箱，或者草稿箱
+	 * 此处是直接删除，而不是放到回收箱中去
+	 */
 	@Override
 	public long clearMail(int type, String host) {
 		Log.d(TAG, "clearMail type:" + type);
@@ -83,7 +91,9 @@ public class MailDaoImpl implements MailDao {
 		return 0;
 	}
 
-	// 接收信息后更改信件状态
+	/**
+	 * 阅读信息后更改信件状态，将信件改成已阅读状态
+	 */
 	@Override
 	public long updateMailReaded(int id) {
 		Log.d(TAG, "updateMailReaded id:" + id);
@@ -93,6 +103,10 @@ public class MailDaoImpl implements MailDao {
 				Const.MAIL_ID + " = ? ", new String[] { String.valueOf(id) });
 	}
 
+	/**
+	 * 根据类型和用户名，列出所有此类的信息(non-Javadoc)
+	 * 比如列出收件箱中所有信息；列出草稿箱中所有信息；列出垃圾箱中所有信息 
+	 */
 	@Override
 	public List<MailBoxInfoEntity> selectMailByTypeAndHost(int type, String host) {
 		Log.d(TAG, "selectMailByTypeAndHost type:" + type + ", host: " + host);
@@ -116,6 +130,7 @@ public class MailDaoImpl implements MailDao {
 		}
 	}
 
+	// 查出指定id的信件
 	@Override
 	public MailBoxInfoEntity selectMailById(int id) {
 		Log.d(TAG, "selectMailByTypeAndHost id:" + id);
@@ -138,6 +153,7 @@ public class MailDaoImpl implements MailDao {
 		}
 	}
 
+	// 将Cursor中值返回到Entity中去
 	private MailBoxInfoEntity createEntity(Cursor cursor) {
 		int idx = 0;
 		MailBoxInfoEntity entity = new MailBoxInfoEntity();

@@ -1,9 +1,9 @@
 package cn.com.liandisys.hellome.model.entity;
 
 public class MailBoxInfoEntity {
-	// id
+	// 信件id
 	private int id;
-	// 
+	// 信件类型:0：收件箱 1：草稿箱 2：垃圾箱
 	private int type;
 	// 用户名
 	private String host;
@@ -19,7 +19,7 @@ public class MailBoxInfoEntity {
 	private String imageName;
 	// 图片string
 	private String imageBuffer;
-	// 0：未读	1：已读
+	// 0：未读 1：已读
 	private int readed;
 
 	public int getId() {

@@ -81,9 +81,11 @@ public class InboxActivity extends Activity implements View.OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.user:
+			// 转向设置的画面
 			goSetting();
 			break;
 		case R.id.new_mail:
+			// 转向写信的画面
 			goWrite();
 			break;
 		case R.id.refresh:
@@ -99,6 +101,7 @@ public class InboxActivity extends Activity implements View.OnClickListener {
 
 						@Override
 						public void onClick(DialogInterface dialog, int which) {
+							// 清空收件箱
 							mLogic.clearInbox();
 							refreshList();
 						}
@@ -205,7 +208,9 @@ public class InboxActivity extends Activity implements View.OnClickListener {
 										Log.i(TAG, "revoke "
 												+ mList.get(p).getId());
 										mLogic.deleteMail(mList.get(p).getId());
+										// 提示：选中邮件已删除
 										showToast(R.string.msg_delete_complete);
+										// 刷新信件
 										refreshList();
 									}
 								}).create().show();
@@ -219,6 +224,7 @@ public class InboxActivity extends Activity implements View.OnClickListener {
 		mClearMail.setOnClickListener(this);
 	}
 
+	// 转向写信的画面
 	private void goWrite() {
 		Log.d(TAG, "goWrite");
 		Intent intent = new Intent(this, WriteActivity.class);
@@ -226,6 +232,7 @@ public class InboxActivity extends Activity implements View.OnClickListener {
 		overridePendingTransition(R.anim.right_in, R.anim.left_out);
 	}
 
+	// 转向设置的画面
 	private void goSetting() {
 		Log.d(TAG, "goSetting");
 		Intent intent = new Intent(this, SettingActivity.class);
@@ -233,8 +240,10 @@ public class InboxActivity extends Activity implements View.OnClickListener {
 		overridePendingTransition(R.anim.left_in, R.anim.right_out);
 	}
 
+	// 刷新信件
 	private void refreshList() {
 		Log.d(TAG, "refresh");
+		// 获取收件箱里的所有信件
 		mList = mLogic.queryMailList(Const.MODE_INBOX);
 		if (null != mList) {
 			MailBoxAdapter adapter = new MailBoxAdapter(this, mList);
@@ -242,10 +251,12 @@ public class InboxActivity extends Activity implements View.OnClickListener {
 		}
 	}
 
+	
 	private void showToast(int msgId) {
 		Toast.makeText(this, msgId, Toast.LENGTH_SHORT).show();
 	}
 
+	// 显示提示信息
 	private void showToast(String msg) {
 		Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
 	}

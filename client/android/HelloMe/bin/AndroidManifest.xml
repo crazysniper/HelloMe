@@ -45,10 +45,6 @@
             </intent-filter>
         </receiver>
         -->
-        <activity
-            android:name="cn.com.liandisys.hellome.Main1Activity11"
-            android:label="@string/title_activity_main1_activity11" >
-        </activity>
     </application>
 
 </manifest>

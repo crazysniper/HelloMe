@@ -41,10 +41,9 @@ public class CalendarUtil {
 	}
 
 	/**
-	 * @param year
-	 * @param month
-	 * @param day
-	 * @return 例 20130930
+	 * 格式化当前时间
+	 * @param milliseconds	当前时间
+	 * @return
 	 */
 	public static String formatNow(long milliseconds) {
 		Calendar c = Calendar.getInstance();
