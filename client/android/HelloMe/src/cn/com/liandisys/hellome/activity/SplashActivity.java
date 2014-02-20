@@ -40,7 +40,7 @@ public class SplashActivity extends Activity {
 			String username = sharedPreferences.getString(Const.HOST, "");
 			// 判断是否已登录，未登录，则为false
 			boolean isLogin = sharedPreferences.getBoolean(Const.IS_LOGIN,false);
-			// 如果能取到用户名或者已登录，则跳转到收件箱画面
+			// 如果用户名不为空，并且已登录，则跳转到收件箱画面
 			if (!"".equals(username) && isLogin) {
 				startActivity(new Intent(getApplication(), InboxActivity.class));
 			} else {	// 否则跳到登录画面

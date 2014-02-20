@@ -27,16 +27,19 @@ public class MailBoxAdapter extends BaseAdapter {
 		inflater = LayoutInflater.from(context);
 	}
 
+	// 在此适配器中所代表的数据集中的条目数
 	@Override
 	public int getCount() {
 		return list.size();
 	}
 
+	// 获取数据集中与指定索引对应的数据项
 	@Override
 	public Object getItem(int position) {
 		return list.get(position);
 	}
 
+	// 取在列表中与指定索引对应的行id
 	@Override
 	public long getItemId(int position) {
 		return position;

@@ -50,6 +50,7 @@ public class LoginActivity extends Activity {
 		mLoginPassword = (EditText) findViewById(R.id.login_password);
 	}
 
+	// 监听器
 	private void setListener() {
 		mGestureDetector = new GestureDetector(this, new LoginGestureListener());
 
@@ -75,7 +76,7 @@ public class LoginActivity extends Activity {
 
 			try {
 				String status = new JSONObject(msg.obj.toString()).getString("status");
-				// 登录成功
+				// 登录成功后，要将用户名和是否已登录的值存到SharedPreferences中去，并且跳转到InboxActivity
 				if ("success".equals(status)) {
 					// 打开Preferences，名称为hellome。如果存在则打开它，否则创建新的Preferences
 					SharedPreferences hellome = LoginActivity.this.getSharedPreferences(Const.SP_NAME, Context.MODE_PRIVATE);
@@ -97,25 +98,27 @@ public class LoginActivity extends Activity {
 					// 完成提交
 					editor.commit();
 					
-					// 跳转
+					// 跳转到InboxActivity
 					Intent intent = new Intent(LoginActivity.this,InboxActivity.class);
 					startActivity(intent);
-					finish();
+					finish();	// 关闭LoginActivity
 				}
 			} catch (JSONException e) {
 				e.printStackTrace();
 			} finally {
 				if (null != progressDialog) {
-					progressDialog.dismiss();
+					progressDialog.dismiss();	// 关闭progressDialog
 				}
 			}
 		}
 	};
 
+	// 正则验证只能输入数字和字母
 	private boolean checkString(String keyword) {
 		return keyword.matches(Const.REGULAR_EXPRESSION);
 	}
 
+	// 显示提示信息
 	private void showToast(int msgId) {
 		Toast.makeText(this, msgId, Toast.LENGTH_SHORT).show();
 	}
@@ -128,8 +131,8 @@ public class LoginActivity extends Activity {
 		initView();
 		setListener();
 
-		SharedPreferences sharedPreferences = getSharedPreferences(
-				Const.SP_NAME, Context.MODE_PRIVATE);
+		// 记住密码时，启动登录画面后，直接从SharedPreferences中读取到用户名，并将值塞到画面上去
+		SharedPreferences sharedPreferences = getSharedPreferences(Const.SP_NAME, Context.MODE_PRIVATE);
 		String username = sharedPreferences.getString(Const.HOST, "");
 		mLoginUser.setText(username);
 	}
@@ -167,10 +170,18 @@ public class LoginActivity extends Activity {
 		Log.i(TAG, loginUser);
 		Log.i(TAG, loginPassword);
 
+		/**
+		 * ProgressDialog是用在耗时操作上的一种组件。基本原理是新建一个线程去执行耗时操作，原线程执行 ProgressDialog对话框的绘制。
+		 * show(Context context, CharSequence title, CharSequence message)
+		 * 参数1：上下文
+		 * 参数2：标题
+		 * 参数3：信息
+		 */
 		progressDialog = ProgressDialog.show(this, "", getResources().getString(R.string.msg_login_content));
 
 		overridePendingTransition(R.anim.right_in, R.anim.left_out);
 
+		// 开启线程，进行登录
 		new Thread(runnable).start();
 	}
 
@@ -184,7 +195,7 @@ public class LoginActivity extends Activity {
 				 * SoapUtil.setSoapRequestParamter   		soap塞值
 				 */
 				loginResult = SoapUtil.getResultString(SoapUtil.setSoapRequestParamter(new String[] { loginUser,loginPassword },SoapUtil.buildSoapObject(Const.LOGIN)));
-				loginHandler.obtainMessage(LOGIN_SUCCESS, loginResult).sendToTarget();
+				loginHandler.obtainMessage(LOGIN_SUCCESS, loginResult).sendToTarget();		// 向handler发消息
 			} catch (IOException e) {
 				loginHandler.obtainMessage(LOGIN_FAIL, "").sendToTarget();
 				e.printStackTrace();
@@ -195,7 +206,8 @@ public class LoginActivity extends Activity {
 		}
 
 	};
-
+	
+	// 手势
 	class LoginGestureListener implements GestureDetector.OnGestureListener {
 
 		@Override

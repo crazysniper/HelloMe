@@ -84,8 +84,8 @@ public class RegisterActivity extends Activity {
 		@Override
 		public void handleMessage(Message msg) {
 			
-			if (msg.what != REGISTER_SUCCESS) {
-				showToast(R.string.msg_register_error);
+			if (msg.what != REGISTER_SUCCESS) {		// 返回值不等于1，则提示注册失败
+				showToast(R.string.msg_register_error);	
 				return;
 			}
 			
@@ -101,7 +101,7 @@ public class RegisterActivity extends Activity {
 				e.printStackTrace();
 			} finally {
 				if (null != progressDialog) {
-					progressDialog.dismiss();
+					progressDialog.dismiss();	// 关闭progressDialog
 				}
 			}
 		}
@@ -128,7 +128,7 @@ public class RegisterActivity extends Activity {
 	}
 	
 	@Override
-	public void onBackPressed() {
+	public void onBackPressed() {	// 返回键
 		super.onBackPressed();
 		goBack();
 	}
@@ -136,10 +136,11 @@ public class RegisterActivity extends Activity {
 	// 返回到登录画面
 	private void goBack() {
 		Log.d(TAG, "goBack");
-		finish();
+		finish();	// 关闭当前Activity
 		overridePendingTransition(R.anim.left_in, R.anim.right_out);
 	}
 	
+	// 注册Action
 	public void registerAction(View view) {
 		registerUser = mRegisterUser.getText().toString();
 		registerPassword = mRegisterPassword.getText().toString();
@@ -164,9 +165,16 @@ public class RegisterActivity extends Activity {
 		Log.i(TAG, registerUser);
 		Log.i(TAG, registerPassword);
 		
+		/**
+		 * ProgressDialog是用在耗时操作上的一种组件。基本原理是新建一个线程去执行耗时操作，原线程执行 ProgressDialog对话框的绘制。
+		 * show(Context context, CharSequence title, CharSequence message)
+		 * 参数1：上下文
+		 * 参数2：标题
+		 * 参数3：信息
+		 */
 		progressDialog = ProgressDialog.show(this, "", getResources().getString(R.string.msg_register_content));
 		
-		// 开启线程
+		// 开启线程，进行注册
 		new Thread(runnable).start();
 		
 		Bundle bundle=new Bundle();
@@ -186,12 +194,15 @@ public class RegisterActivity extends Activity {
 	// 线程
 	Runnable runnable = new Runnable() {
 
+		// 在android中，通常我们无法在单独的线程中更新UI，而要在主线程中，这也就是为什么我们要使用 Handler了，
+		// 当handler收到消息中，它会把它放入到队列中等待执行，通常来说这会很快被执行。 
+		
 		@Override
 		public void run() {
 			String registerResult = null;
 			try {
 				registerResult = SoapUtil.getResultString(SoapUtil.setSoapRequestParamter(new String[] {registerUser, registerPassword }, SoapUtil.buildSoapObject(Const.REG)));
-				registerHandler.obtainMessage(REGISTER_SUCCESS, registerResult).sendToTarget();
+				registerHandler.obtainMessage(REGISTER_SUCCESS, registerResult).sendToTarget();			// 向handler发消息 
 			} catch (IOException e) {
 				registerHandler.obtainMessage(REGISTER_FAIL, "").sendToTarget();
 				e.printStackTrace();
