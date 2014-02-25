@@ -42,17 +42,25 @@ public class CalendarUtil {
 
 	/**
 	 * 格式化当前时间
-	 * @param milliseconds	当前时间
+	 * 
+	 * @param milliseconds
+	 *            当前时间
 	 * @return
 	 */
 	public static String formatNow(long milliseconds) {
+		/**
+		 * Calendar类是抽象类，且Calendar类的构造方法是protected的， 所以无法使用Calendar类的构造方法来创建对象，
+		 * API中提供了getInstance方法用来创建对象。
+		 */
 		Calendar c = Calendar.getInstance();
 		c.setTimeInMillis(milliseconds);
-		int year = c.get(Calendar.YEAR);
-		int month = c.get(Calendar.MONTH) + 1;
-		int day = c.get(Calendar.DAY_OF_MONTH);
-		int hour = c.get(Calendar.HOUR_OF_DAY);
-		int minute = c.get(Calendar.MINUTE);
+		int year = c.get(Calendar.YEAR); // 年份
+		int month = c.get(Calendar.MONTH) + 1; // 月份
+		int day = c.get(Calendar.DAY_OF_MONTH);// 一个月中的某天。它与 DATE
+												// 是同义词。一个月中第一天的值为 1
+		int hour = c.get(Calendar.HOUR_OF_DAY);// 小时
+		int minute = c.get(Calendar.MINUTE);// 分钟
+		// %02d，指当月份是5月时，返回的值是05月
 		return "" + year + String.format("%02d", month)
 				+ String.format("%02d", day) + String.format("%02d", hour)
 				+ String.format("%02d", minute);

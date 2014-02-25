@@ -48,7 +48,7 @@ public class DraftBoxActivity extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				// TODO showMail
+				// 将邮件的id传到ReadActivity中去
 				Intent intent = new Intent(getApplicationContext(), ReadActivity.class);
 				intent.putExtra("id", mList.get(position).getId());
 				startActivity(intent);
@@ -63,10 +63,10 @@ public class DraftBoxActivity extends Activity {
 				// TODO delete mail
 				AlertDialog.Builder builder = new AlertDialog.Builder(
 						DraftBoxActivity.this)
-						.setTitle(R.string.msg_delete_title)
-						.setMessage(R.string.msg_delete_content)
-						.setNegativeButton(R.string.cancel, null)
-						.setPositiveButton(R.string.confirm,
+						.setTitle(R.string.msg_delete_title)		// 对话框的标题：“删除”
+						.setMessage(R.string.msg_delete_content)	// 删除内容 ：“是否删除？”
+						.setNegativeButton(R.string.cancel, null)	// 按钮： “取消”
+						.setPositiveButton(R.string.confirm,		// 按钮：“确认”
 								new OnClickListener() {
 
 									@Override
@@ -76,7 +76,7 @@ public class DraftBoxActivity extends Activity {
 										 * dao.delete(mList.get(position).getId())
 										 * ;
 										 */
-										showToast(R.string.msg_delete_complete);
+										showToast(R.string.msg_delete_complete);	// 显示提示信息 ：“选中邮件已删除”
 									}
 								});
 				builder.create().show();

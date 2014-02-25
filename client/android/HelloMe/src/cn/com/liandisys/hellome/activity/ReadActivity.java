@@ -24,6 +24,7 @@ public class ReadActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_read);
+		// 如果获取id的value值为空，则返回-1
 		int id = getIntent().getIntExtra(Const.INTENT_ID, -1);
 		if (!setMailData(id)) {
 			finish();
