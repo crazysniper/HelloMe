@@ -307,8 +307,7 @@ public class InboxActivity extends Activity implements View.OnClickListener {
 			super.handleMessage(msg);
 			String json = (String) msg.obj;
 			if (null != json) {
-				if (!Const.SUCCESS.equals(JSonUtil.getJSonString(Const.STATUS,
-						json))) {
+				if (!Const.SUCCESS.equals(JSonUtil.getJSonString(Const.STATUS, json))) {
 					showToast(JSonUtil.getJSonString(Const.MESSAGE, json));
 				} else {
 					List<MailBoxInfoEntity> list = JSonUtil.getMails(json);

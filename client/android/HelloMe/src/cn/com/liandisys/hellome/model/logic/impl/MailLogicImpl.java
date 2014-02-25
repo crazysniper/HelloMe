@@ -43,8 +43,7 @@ public class MailLogicImpl implements MailLogic {
 		mailbox.setType(Const.MODE_INBOX); // 设属性是收件箱
 		mailbox.setHost(host);
 		mailbox.setReaded(0); // 设信件未读状态
-		if ("".equals(mailbox.getImageName())
-				|| "".equals(mailbox.getImageBuffer())) { // 如果没有图片，则设为""
+		if ("".equals(mailbox.getImageName()) || "".equals(mailbox.getImageBuffer())) { // 如果没有图片，则设为""
 			mailbox.setImageName("");
 		} else {
 			String fileNmae = String.valueOf(System.currentTimeMillis()); // 以当前时间为文件名
